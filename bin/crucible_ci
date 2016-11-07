@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'methadone'
+require 'bundler/setup'
+require 'crucible_ci'
+
+class App
+  include Methadone::Main
+  include Methadone::CLILogging
+
+  main do |server_url|
+    allowed_failures = options['allowed-failures'] ? options['allowed-failures'].to_i : 0
+    if options[:resource] || options[:test]
+      CrucibleCi::Executor.execute(server_url, allowed_failures, options[:test], options[:resource])
+    else
+      CrucibleCi::Executor.execute_all(server_url, allowed_failures)
+    end
+  end
+
+  on('-r', '--resource VALUE', 'The name of a FHIR Resource to be tested')
+  on('-t', '--test VALUE', 'The name of a Plan Executor test to be tested')
+  on('-a', '--allowed-failures VALUE', 'The number of failures allowed in the test suite (default 0)')
+
+  arg :server_url
+
+  version CrucibleCi::VERSION
+
+  use_log_level_option toggle_debug_on_signal: 'USR1'
+
+  go!
+end
