@@ -24,8 +24,10 @@ GIT
       mime-types (>= 1.16, < 3)
       nokogiri (>= 1.6)
 
-PATH
-  remote: ../plan_executor
+GIT
+  remote: https://github.com/fhir-crucible/plan_executor.git
+  revision: 3c63f7e881d8878c97b50e52d4e01bfe17740b5e
+  branch: master
   specs:
     plan_executor (1.0.0)
       ansi
@@ -161,4 +163,4 @@ DEPENDENCIES
   test-unit
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
