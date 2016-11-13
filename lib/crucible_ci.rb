@@ -9,8 +9,8 @@ module CrucibleCi
       FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
-        options = client.get_oauth2_metadata_from_conformance
-        set_client_secrets(client, options) unless options.empty?
+        # options = client.get_oauth2_metadata_from_conformance
+        # set_client_secrets(client, options) unless options.empty?
         results = execute_test(client, test, resource)
       end
       puts "Execute #{test} completed in #{b.real} seconds."
@@ -22,8 +22,8 @@ module CrucibleCi
       FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
-        options = client.get_oauth2_metadata_from_conformance
-        set_client_secrets(client, options) unless options.empty?
+        # options = client.get_oauth2_metadata_from_conformance
+        # set_client_secrets(client, options) unless options.empty?
         results = execute_all(client)
       end
       puts "Execute All completed in #{b.real} seconds."
@@ -53,7 +53,6 @@ module CrucibleCi
       if client_id != '' && client_secret != ''
         options[:client_id] = client_id
         options[:client_secret] = client_secret
-        # set_oauth2_auth(client,secret,authorizePath,tokenPath)
         client.set_oauth2_auth(options[:client_id], options[:client_secret], options[:authorize_url], options[:token_url])
       else
         puts 'Ignoring OAuth2 credentials: empty id or secret. Using unsecured client...'
