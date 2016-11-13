@@ -38,7 +38,7 @@ module CrucibleCi
     def self.passing?(results, allowed_failures)
       failures = num_failures(results)
       if failures > allowed_failures
-        return 4
+        return 64
       else
         return 0
       end
