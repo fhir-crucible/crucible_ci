@@ -6,6 +6,7 @@ module CrucibleCi
   class Executor
     def self.execute(url, allowed_failures, test = nil, resource = nil)
       results = nil
+      FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
         options = client.get_oauth2_metadata_from_conformance
@@ -18,6 +19,7 @@ module CrucibleCi
 
     def self.execute_all(url, allowed_failures)
       results = nil
+      FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
         options = client.get_oauth2_metadata_from_conformance
