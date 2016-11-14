@@ -9,6 +9,7 @@ module CrucibleCi
       FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
+        client.conformance_statement
         # options = client.get_oauth2_metadata_from_conformance
         # set_client_secrets(client, options) unless options.empty?
         results = execute_test(client, test, resource)
@@ -22,6 +23,7 @@ module CrucibleCi
       FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
+        client.conformance_statement
         # options = client.get_oauth2_metadata_from_conformance
         # set_client_secrets(client, options) unless options.empty?
         results = execute_all(client)
