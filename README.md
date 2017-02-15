@@ -1,10 +1,10 @@
 # CrucibleCI
 
-CrucibleCI is a gem to run Crucible's {Plan Executor}[https://github.com/fhir-crucible/plan_executor] tests against a FHIR server. It's intended for use in Continuous Integration and other testing systems to validate servers during development.
+CrucibleCI is a gem to run Crucible's [Plan Executor](https://github.com/fhir-crucible/plan_executor) tests against a FHIR server. It's intended for use in Continuous Integration and other testing systems to validate servers during development.
 
 ## Installation
 
-Add this line to your application's Gemfile:fa
+Add this line to your application's Gemfile
 
 ```ruby
 gem 'crucible_ci'
