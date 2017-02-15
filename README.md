@@ -1,12 +1,10 @@
-# CrucibleCi
+# CrucibleCI
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/crucible_ci`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+CrucibleCI is a gem to run Crucible's {Plan Executor}[https://github.com/fhir-crucible/plan_executor] tests against a FHIR server. It's intended for use in Continuous Integration and other testing systems to validate servers during development.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add this line to your application's Gemfile:fa
 
 ```ruby
 gem 'crucible_ci'
@@ -22,7 +20,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```shell
+./bin/crucible_ci [options] server_url
+
+```
+Where `server_url` is the URL of a FHIR server accessible to the current computer.
+
+### Options
+
+* `-h`, `--help` - Displays this help message
+* `-r`, `--resource` `VALUE` - The name of a FHIR Resource to be tested (such as `Patient` or `Encounter`)
+* `-t`, `--test` `VALUE` - The name of a Plan Executor test to be tested (such as `HistoryTest`)
+* `-a`, `--allowed-failures` `VALUE` - The number of failures allowed in the test suite (default: `0`)
+* `-v`, `--version` - Show help/version info
+* `--log-level` `LEVEL` Set the logging level (`debug`|`info`|`warn`|`error`|`fatal`) (default: `info`)
 
 ## Development
 
@@ -32,5 +43,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/crucible_ci.
+Bug reports and pull requests are welcome on GitHub at https://github.com/fhir-crucible/crucible_ci.
 
+Copyright (C) 2017 The MITRE Corporation.

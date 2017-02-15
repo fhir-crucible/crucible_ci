@@ -20,7 +20,7 @@ class App
 
   on('-r', '--resource VALUE', 'The name of a FHIR Resource to be tested')
   on('-t', '--test VALUE', 'The name of a Plan Executor test to be tested')
-  on('-a', '--allowed-failures VALUE', 'The number of failures allowed in the test suite (default 0)')
+  on('-a', '--allowed-failures VALUE', 'The number of failures allowed in the test suite (Default: 0)')
 
   arg :server_url
 
