@@ -41,8 +41,9 @@ GIT
 PATH
   remote: .
   specs:
-    crucible_ci (0.1.0)
+    crucible_ci (0.1.3)
       methadone (~> 1.9.2)
+      plan_executor (~> 1.8)
 
 GEM
   remote: https://rubygems.org/
