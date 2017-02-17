@@ -2,5 +2,5 @@
 results.html
 pkg
 html
-logs/*.log
+logs/*.log*
 *.gem
