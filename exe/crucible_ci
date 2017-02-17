@@ -12,9 +12,9 @@ class App
   main do |server_url|
     allowed_failures = options['allowed-failures'] ? options['allowed-failures'].to_i : 0
     if options[:resource] || options[:test]
-      CrucibleCi::Executor.execute(server_url, allowed_failures, options[:test], options[:resource])
+      CrucibleCi::Executor.execute(server_url, allowed_failures, options[:test], options[:resource], logger)
     else
-      CrucibleCi::Executor.execute_all(server_url, allowed_failures)
+      CrucibleCi::Executor.execute_all(server_url, allowed_failures, logger)
     end
   end
 

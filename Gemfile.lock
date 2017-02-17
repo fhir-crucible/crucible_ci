@@ -26,7 +26,7 @@ GIT
 
 GIT
   remote: https://github.com/fhir-crucible/plan_executor.git
-  revision: fc9d014a0c961398185bfa6347734c381c617634
+  revision: 6f984863fd81b0a2a45dd914dd3660a00c718c81
   branch: master
   specs:
     plan_executor (1.8.0)
@@ -41,7 +41,7 @@ GIT
 PATH
   remote: .
   specs:
-    crucible_ci (0.1.3)
+    crucible_ci (0.1.5)
       methadone (~> 1.9.2)
       plan_executor (~> 1.8)
 

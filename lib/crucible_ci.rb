@@ -4,28 +4,24 @@ require 'benchmark'
 
 module CrucibleCi
   class Executor
-    def self.execute(url, allowed_failures, test = nil, resource = nil)
+    def self.execute(url, allowed_failures, test = nil, resource = nil, logger = nil)
       results = nil
-      FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
+      FHIR.logger = defined?(Rails) ? Rails.logger : logger
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
         client.conformance_statement
-        # options = client.get_oauth2_metadata_from_conformance
-        # set_client_secrets(client, options) unless options.empty?
         results = execute_test(client, test, resource)
       end
       puts "Execute #{test} completed in #{b.real} seconds."
       passing?(results, allowed_failures)
     end
 
-    def self.execute_all(url, allowed_failures)
+    def self.execute_all(url, allowed_failures, logger = nil)
       results = nil
-      FHIR.logger = Logger.new("logs/crucible_ci.log", 10, 1024000)
+      FHIR.logger = defined?(Rails) ? Rails.logger : logger
       b = Benchmark.measure do
         client = FHIR::Client.new(url)
         client.conformance_statement
-        # options = client.get_oauth2_metadata_from_conformance
-        # set_client_secrets(client, options) unless options.empty?
         results = execute_all(client)
       end
       puts "Execute All completed in #{b.real} seconds."
